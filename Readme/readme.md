@@ -1,0 +1,4 @@
+# 感想
+2025.5.30.重置所有仓库并合并在一起，本文档记录所有学习内容。发现传统＋AI一定是潮流，抓紧时间上车。为了我老婆，我得不受干扰的走自己的路。
+# 前端所需的vscode插件
+Chinese;HTML CSS Support;Live Server;Auto Rename Tag
