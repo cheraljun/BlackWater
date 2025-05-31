@@ -1,17 +1,22 @@
 import requests
 
-class HappyCode:
+class AiLove:
     def __init__(self):
         pass
+
+    def loveword(self):
+        self.result = requests.get(url="https://api.pearktrue.cn/api/jdyl/qinghua.php").text
+        print(f"请求情话成功:{self.result}\n")
+    
     def AI_talk(self):
-        question = input("请提问?")
+        self.loveword()
         url = "https://api.siliconflow.cn/v1/chat/completions"
         payload = {
             "model": "Qwen/Qwen3-8B",
             "messages": [
                 {
                     "role": "user",
-                    "content": f"{question}"
+                    "content": f"{self.result}"
                 }
             ],
             "stream": False,
@@ -39,34 +44,15 @@ class HappyCode:
             ]
         }
         headers = {
-            "Authorization": "Bearer sk-maadyokebopfltzxonapnlitaucqxbpwvzkvpwizihvnhsmc",
+            "Authorization": "Bearer <输入你自己的apikey>",
             "Content-Type": "application/json"
         }
-
-        response = requests.request("POST", url, json=payload, headers=headers).text
-        print(response)
-
-    def data_type(self):
-        print(type(None))
-
-        print(type("字符串"))
-
-        print(type(123))
-        print(type(1.23))
-
-        print(type(True))
-        print(type(False))
-        
-        print(type(["我爱你", "我超级爱你", 520]))
-        print(type(("我爱你", "我超级爱你", 520)))
-        print(type({"我说": "我爱你", "I say": "I love you"}))
-        print(type({1, 2, 2}))
+        print(f"AI收到情话: {self.result}\n正在分析...\n")
+        AIresult = requests.request("POST", url, json=payload, headers=headers).text
+        return f"AI返回结果是: \n{AIresult}"
 
 if __name__ == "__main__":
-    TodayCode = HappyCode()
-    ''' 
-    TodayCode.AI_talk()
-    TodayCode.data_type()
-    '''
+    love = AiLove()
     while True:
-        TodayCode.AI_talk()
+        result = love.AI_talk()
+        print(result)
