@@ -42,7 +42,7 @@ class Bottle:
         with sync_playwright() as driver:
 
             # 开启broswer
-            browser = driver.chromium.launch(headless=True, timeout = Bottle.timeout_value)
+            browser = driver.chromium.launch(headless=False, timeout = Bottle.timeout_value)
 
             # 创建浏览器上下文
             # 请求头
@@ -120,7 +120,7 @@ class Bottle:
                             
                             love = self.loveword()
                             print(f"正在填充评论...\n评论内容: {love}")
-                            page.locator('#content-textarea').fill(f"正在到处漂流~漂流到好看的帖主这儿[doge]~{love}[红色心形R]")
+                            page.locator('#content-textarea').fill(f"正在漂流进第{len(self.note_id)}个帖子[doge]~漂流到好看的帖主这儿[红色心形R]~{love}[红色心形R]")
                             page.wait_for_timeout(self.human_wait())
 
                             print("正在发送评论...")
