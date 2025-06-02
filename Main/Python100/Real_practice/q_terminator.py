@@ -1,3 +1,5 @@
+import random
+
 def table_of_ninenine():
     '''
     请输出九九乘法表, 格式如下
@@ -23,36 +25,74 @@ def table_of_ninenine():
 
 def prime_numbers():
     '''
-    要求：输入一个大于 1 的正整数，判断它是不是素数。
-    提示：素数指的是只能被 1 和自身整除的大于 1 的整数。
+    要求: 输入一个大于 1 的正整数, 判断它是不是素数。
+    提示: 素数指的是只能被 1 和自身整除的大于 1 的整数。
     '''
     
-    prime = int(input("请打出一个正整数"))
+    prime = int(input("please input a positive integer"))
     divisor = 2
 
     if prime <= 2:
         if prime == 1:
-            print("您输入的是1, 素数从2才能开始")
+            print("you input 1, but prime start from 2")
             return
         else:
-            print(f"数字{prime}是一个偶素数")
+            print(f"{prime}is a even prime number")
             return
     
     while divisor <= prime:
         if prime % divisor == 0:
             if prime == divisor:
-                print(f"数字{prime}是一个素数")
+                print(f"{prime} is a prime!")
                 return
             else:
-                print(f"数字{prime}不是素数, 它可以被{divisor}整除")
+                print(f"{prime} is not a prime, it can be divided by {divisor}")
                 return
         else:
-            print(f"正在尝试{prime}除以{divisor}")
+            print(f"trying...{prime}/{divisor}")
         divisor += 1
+
+def auto_guess_machine():
+    '''
+    猜数字
+    要求: 人类选择一个区间, 计算机随机选择一个数字，并模拟人类玩猜数字游戏。
+    计算机给出对应的提示信息“大一点”、“小一点”或“猜对了”, 
+    如果猜中了数字, 计算机统计一共猜了多少次, 游戏结束, 否则游戏继续。
+
+    知识点: 
+    二分查找的正确性依赖于两个条件: 
+    有序性: 数组必须是升序或降序排列的。
+    区间收缩: 每次迭代后, 搜索范围必须严格缩小, 且目标值始终存在于新的搜索范围内。
+    '''
+    while True:
+        try:
+            low = int(input("low: "))
+            high = int(input("high: "))
+            if low > high:
+                low, high = high, low
+        except Exception as e:
+            print("you may need to input again...")
+        choice = random.randint(low, high)
+        input(f"machine auto choosed a number between {low} and {high}!should player start guessing? please enter...")
+
+        count = 1
+        while True:
+            player = (low+high)//2
+            if player < choice:
+                print(f"you guess {player}, too small, please guess again!")
+                low = player + 1
+            elif player > choice:
+                print(f"you guess {player}, too big, please guess again!")
+                high = player - 1
+            else:
+                print(f"right! the number is {choice}, you guess {count} times\n")
+                return
+            count += 1
 
 if __name__ == "__main__":
     '''
     table_of_ninenine()
     prime_numbers()
+    auto_guess_machine()
     '''
-    table_of_ninenine()
+    auto_guess_machine()
