@@ -61,7 +61,7 @@ class AiNews:
 
         Time = self.Now()
         email = "1773384983@qq.com"
-        password = "guadtyvzeekwbdgc"
+        password = ""
 
         yag = yagmail.SMTP(user = email, 
                            password = password,
