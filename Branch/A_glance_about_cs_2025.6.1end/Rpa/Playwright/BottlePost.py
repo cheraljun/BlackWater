@@ -144,21 +144,5 @@ class Bottle:
             input(f"已完成{X}轮滚动, 回车结束程序。")
                     
 if __name__ == "__main__":
-    
-    # 爬虫检测, 商业版用
-    # parse = Parse(
-    #     user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", 
-    #     test_url="https://www.xiaohongshu.com/explore"
-    # )
-    # can_crawl = parse.can_crawl("https://www.xiaohongshu.com/explore")
-
-    # if can_crawl:
-    
-    #     XHS_Post = Bottle()
-    #     XHS_Post.Post()
-    # else:
-    #     print("此网站不可爬虫")
-
-    # 自娱自乐
     XHS_Post = Bottle()
     XHS_Post.Post()
